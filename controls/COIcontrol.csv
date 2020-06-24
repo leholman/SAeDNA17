@@ -1,0 +1,60 @@
+"","L.C1","L.C2","L.C3","L.C4","L.C5","L.C6","L.C7","L.C8","L.C9","L.PCR1","X","OTU","assignmentQual","taxID","superkingdom","phylum","class","order","family","genus","species"
+"OTU_10861",0,0,21,0,0,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"OTU_11471",0,0,19,0,0,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"OTU_12181",0,0,0,0,0,0,17,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"OTU_12601",0,0,0,0,0,0,4,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"OTU_13060",0,0,0,0,0,0,5,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"OTU_1359",0,6,0,0,0,16,0,0,0,56,"1346","OTU_1359","Low","868861","Eukaryota","Chordata","Ascidiacea","Enterogona","Ascidiidae","Ascidia","Ascidia gemmata"
+"OTU_14102",0,0,0,0,0,0,3,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"OTU_14739",0,0,0,5,0,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"OTU_15439",0,0,0,17,0,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"OTU_1648",4,13,99,27,0,0,3,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"OTU_18105",0,0,0,0,2,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"OTU_19359",0,7,0,0,0,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"OTU_19360",0,0,7,0,0,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"OTU_19361",0,0,0,7,0,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"OTU_20794",0,0,3,0,0,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"OTU_20796",0,0,0,0,0,6,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"OTU_20797",0,0,0,0,0,0,6,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"OTU_22773",0,0,5,0,0,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"OTU_22774",0,0,5,0,0,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"OTU_22775",0,0,5,0,0,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"OTU_22776",0,0,0,5,0,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"OTU_22777",0,0,0,5,0,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"OTU_22778",0,0,0,0,0,0,5,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"OTU_2285",0,0,0,0,0,0,7,0,0,0,"2266","OTU_2285","Low","547546","Eukaryota","Annelida","Polychaeta","Capitellida","Capitellidae","Dasybranchus","Dasybranchus sp. DH1"
+"OTU_2327",0,0,0,350,0,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"OTU_25221",0,0,4,0,0,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"OTU_25222",0,0,4,0,0,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"OTU_25223",0,0,0,4,0,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"OTU_25224",0,0,0,2,0,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"OTU_26",0,0,0,0,0,0,2,0,0,0,"26","OTU_26","High","38833","Eukaryota","Chlorophyta","Mamiellophyceae","Mamiellales","Mamiellaceae","Micromonas","Micromonas pusilla"
+"OTU_28614",0,0,3,0,0,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"OTU_28615",0,0,3,0,0,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"OTU_28616",0,0,0,3,0,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"OTU_28617",0,0,0,0,0,0,3,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"OTU_28618",0,0,0,0,0,0,3,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"OTU_28619",0,0,0,0,0,0,3,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"OTU_32946",0,0,2,0,0,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"OTU_32947",0,0,2,0,0,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"OTU_32948",0,0,0,0,0,0,2,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"OTU_3332",0,0,0,4,0,0,0,0,0,0,"3303","OTU_3332","Low","120807","Eukaryota","","Eustigmatophyceae","Eustigmatales","Monodopsidaceae","Nannochloropsis","Nannochloropsis limnetica"
+"OTU_3400",0,0,0,0,0,0,16,0,0,0,"3371","OTU_3400","Low","395010","Eukaryota","Ascomycota","Dothideomycetes","Capnodiales","Mycosphaerellaceae","Zasmidium","Zasmidium cellare"
+"OTU_3541",0,0,3,0,0,0,0,0,0,0,"3511","OTU_3541","High","201961","Eukaryota","Chordata","Ascidiacea","Enterogona","Ascidiidae","Ascidiella","Ascidiella aspersa"
+"OTU_37314",0,0,0,0,0,0,0,1,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"OTU_4802",0,0,0,0,0,0,2,0,0,0,"4753","OTU_4802","Low","2486653","Eukaryota","Ascomycota","Lecanoromycetes","Lecanorales","Parmeliaceae","Parmotrema","Parmotrema ultralucens"
+"OTU_5099",0,0,89,0,0,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"OTU_5385",0,0,0,0,0,0,0,0,0,80,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"OTU_5553",10,0,0,0,0,0,0,0,0,0,"5494","OTU_5553","None","None",NA,NA,NA,NA,NA,NA,NA
+"OTU_5884",0,0,12,0,0,0,0,0,0,4,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"OTU_5982",0,0,0,0,0,0,27,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"OTU_6067",0,0,0,0,0,0,0,0,0,3,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"OTU_6201",0,0,4,0,0,0,0,0,0,0,"6133","OTU_6201","High-MH","None","Eukaryota","Chordata","Mammalia","","Bovidae","Bos",NA
+"OTU_7050",0,0,0,0,0,0,0,0,0,23,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"OTU_7256",0,0,44,0,0,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"OTU_7674",0,0,0,0,0,0,23,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"OTU_8121",0,0,8,0,0,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"OTU_8779",0,0,0,0,0,0,0,0,31,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"OTU_910",0,0,3,0,0,0,0,0,0,0,"901","OTU_910","Low","6063","Eukaryota","Porifera","Demospongiae","Suberitida","Halichondriidae","Halichondria","Halichondria panicea"
+"OTU_9430",0,0,0,0,0,0,2,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"OTU_9620",0,0,0,4,0,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
