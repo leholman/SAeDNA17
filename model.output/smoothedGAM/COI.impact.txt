@@ -7,15 +7,15 @@ y ~ s(x1, x2, k = 10, bs = "tp", fx = FALSE)
 
 Parametric coefficients:
             Estimate Std. Error t value Pr(>|t|)    
-(Intercept)   3.2348     0.1753   18.45 1.51e-10 ***
+(Intercept)   3.2348     0.1588   20.36 1.82e-10 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Approximate significance of smooth terms:
            edf Ref.df     F p-value   
-s(x1,x2) 4.299      9 2.609  0.0044 **
+s(x1,x2) 5.356      9 3.591 0.00273 **
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
-R-sq.(adj) =   0.58   Deviance explained = 68.6%
--REML = 24.525  Scale est. = 0.55332   n = 18
+R-sq.(adj) =  0.655   Deviance explained = 76.4%
+-REML = 24.298  Scale est. = 0.45418   n = 18

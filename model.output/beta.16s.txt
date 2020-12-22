@@ -1,0 +1,42 @@
+Analysis of Variance Table
+
+Response: Distances
+          Df   Sum Sq   Mean Sq F value  Pr(>F)  
+Groups     2 0.038883 0.0194414  4.0874 0.03829 *
+Residuals 15 0.071346 0.0047564                  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = distances ~ group, data = df)
+
+$group
+          diff          lwr       upr     p adj
+S-W 0.04778014 -0.055645464 0.1512058 0.4712291
+E-W 0.11338036  0.009954751 0.2168060 0.0309651
+E-S 0.06560021 -0.037825393 0.1690258 0.2571908
+
+
+Call:
+adonis(formula = vegdist(t(rProK), "jaccard", binary = TRUE) ~      latlongdata$PERMori[match(colnames(rProK), latlongdata$sitecode)]) 
+
+Permutation: free
+Number of permutations: 999
+
+Terms added sequentially (first to last)
+
+                                                                  Df SumsOfSqs MeanSqs F.Model      R2
+latlongdata$PERMori[match(colnames(rProK), latlongdata$sitecode)]  2    1.7373 0.86867  3.2289 0.30096
+Residuals                                                         15    4.0354 0.26903         0.69904
+Total                                                             17    5.7727                 1.00000
+                                                                  Pr(>F)    
+latlongdata$PERMori[match(colnames(rProK), latlongdata$sitecode)]  0.001 ***
+Residuals                                                                   
+Total                                                                       
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+  combination SumsOfSqs   MeanSqs  F.Model        R2     P.value P.value.corrected
+1     W <-> S 0.7381949 0.7381949 3.135160 0.2386846 0.000999001       0.002997003
+2     W <-> E 1.0925757 1.0925757 3.992776 0.2853455 0.002997003       0.002997003
+3     S <-> E 0.7752426 0.7752426 2.601615 0.2064509 0.002997003       0.002997003

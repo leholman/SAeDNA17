@@ -1,0 +1,17 @@
+,,, Multivariate Dispersion,,PERMANOVA,
+Phyla,Dataset,nASVs,Fstat,p value,Fstat,p value
+Arthropoda,Metazoa,354,1.742,0.209,1.816,0.001
+Cnidaria,Metazoa,258,0.774,0.479,2.468,0.001
+Mollusca,Metazoa,106,0.377,0.692,2.07,0.001
+Chordata,Metazoa,92,0.241,0.789,1.452,0.001
+Porifera,Metazoa,68,2.771,0.095,2.261,0.001
+Dinoflagellata,Protist,257,2.637,0.104,3.086,0.001
+Ciliophora,Protist,389,0.437,0.654,2.024,0.001
+Protalveolata,Protist,281,1.958,0.176,2.802,0.001
+Cercozoa,Protist,218,1,0.391,2.446,0.001
+Prymnesiophyceae,Protist,70,0.178,0.839,2.598,0.001
+Proteobacteria,Bacteria,1340,2.489,0.117,3.208,0.001
+Bacteroidetes,Bacteria,673,7.38,0.006,4.084,0.001
+Cyanobacteria,Bacteria,390,2.776,0.094,2.826,0.001
+Epsilonbacteraeota,Bacteria,83,2.158,0.15,1.47,0.029
+Verrucomicrobia,Bacteria,84,0.45,0.646,2.748,0.001

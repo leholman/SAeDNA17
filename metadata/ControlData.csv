@@ -1,0 +1,12 @@
+﻿ID,Type,Long
+C1,lab,LabSterivex
+C2,travel,TravelBlank
+C3,travel,TravelBlank
+C4,travel,TravelBlank
+C5,travel,TravelBlank
+C6,travel,TravelBlank
+C7,travel,TravelBlank
+C8,lab,DNAextraction
+C9,lab,ZymoBlank
+PCR1,pcr1,PCR1blank
+NTC,pcr1,no template control 

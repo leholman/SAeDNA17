@@ -1,0 +1,29 @@
+Analysis of Variance Table
+
+Response: Distances
+          Df   Sum Sq   Mean Sq F value Pr(>F)
+Groups     2 0.009101 0.0045505  1.9247 0.1803
+Residuals 15 0.035464 0.0023643               
+
+Call:
+adonis(formula = vegdist(t(r18S), "jaccard", binary = TRUE) ~      latlongdata$PERMori[match(colnames(r18S), latlongdata$sitecode)]) 
+
+Permutation: free
+Number of permutations: 999
+
+Terms added sequentially (first to last)
+
+                                                                 Df SumsOfSqs MeanSqs F.Model      R2
+latlongdata$PERMori[match(colnames(r18S), latlongdata$sitecode)]  2    1.5625 0.78126  2.4084 0.24307
+Residuals                                                        15    4.8658 0.32439         0.75693
+Total                                                            17    6.4283                 1.00000
+                                                                 Pr(>F)    
+latlongdata$PERMori[match(colnames(r18S), latlongdata$sitecode)]  0.001 ***
+Residuals                                                                  
+Total                                                                      
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+  combination SumsOfSqs   MeanSqs  F.Model        R2     P.value P.value.corrected
+1     W <-> S 0.7602046 0.7602046 2.483708 0.1989559 0.004995005       0.004995005
+2     W <-> E 0.8828040 0.8828040 2.686796 0.2117789 0.002997003       0.004495504
+3     S <-> E 0.7007654 0.7007654 2.070134 0.1715088 0.002997003       0.004495504

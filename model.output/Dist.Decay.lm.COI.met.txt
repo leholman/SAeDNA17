@@ -1,0 +1,21 @@
+
+Call:
+lm(formula = log10(1 - site.dissimilarity) ~ distance * site.type)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.49331 -0.12276  0.00548  0.16223  0.35861 
+
+Coefficients:
+                            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)               -8.433e-01  4.705e-02 -17.922  < 2e-16 ***
+distance                  -3.755e-04  4.765e-05  -7.880 1.87e-11 ***
+site.typeNatural           1.610e-01  1.082e-01   1.488 0.140856    
+distance:site.typeNatural -4.152e-04  1.063e-04  -3.905 0.000202 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.2081 on 76 degrees of freedom
+Multiple R-squared:  0.6533,	Adjusted R-squared:  0.6396 
+F-statistic: 47.73 on 3 and 76 DF,  p-value: < 2.2e-16
+

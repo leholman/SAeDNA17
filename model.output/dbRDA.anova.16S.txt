@@ -1,0 +1,44 @@
+Permutation test for dbrda under reduced model
+Marginal effects of terms
+Permutation: free
+Number of permutations: 10000
+
+Model: dbrda(formula = vegdist(t(rProK), method = "jaccard", binary = TRUE) ~ envmatrix$temp + envmatrix$impact)
+                 Df SumOfSqs      F    Pr(>F)    
+envmatrix$temp    1   1.0178 3.6550 9.999e-05 ***
+envmatrix$impact  1   0.5194 1.8652  0.009299 ** 
+Residual         15   4.1769                     
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+$r.squared
+[1] 0.2764498
+
+$adj.r.squared
+[1] 0.1799765
+
+
+Partition of squared Binary jaccard distance in dbRDA 
+
+Call: varpart(Y = vegdist(t(rProK), method = "jaccard", binary = TRUE), X = envmatrix$temp,
+envmatrix$impact)
+
+Explanatory tables:
+X1:  envmatrix$temp
+X2:  envmatrix$impact 
+
+No. of explanatory tables: 2 
+Total variation (SS): 5.7727 
+No. of observations: 18 
+
+Partition table:
+                     Df R.squared Adj.R.squared Testable
+[a+b] = X1            1   0.18648       0.13564     TRUE
+[b+c] = X2            1   0.10015       0.04390     TRUE
+[a+b+c] = X1+X2       2   0.27645       0.17998     TRUE
+Individual fractions                                    
+[a] = X1|X2           1                 0.13607     TRUE
+[b]                   0                -0.00044    FALSE
+[c] = X2|X1           1                 0.04434     TRUE
+[d] = Residuals                         0.82002    FALSE
+---
+Use function ‘dbrda’ to test significance of fractions of interest

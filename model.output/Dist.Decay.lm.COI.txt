@@ -4,18 +4,18 @@ lm(formula = log10(site.similarity) ~ distance * site.type)
 
 Residuals:
      Min       1Q   Median       3Q      Max 
--0.49170 -0.16329  0.01684  0.16723  0.49137 
+-0.49683 -0.16487  0.01503  0.16796  0.48798 
 
 Coefficients:
                             Estimate Std. Error t value Pr(>|t|)    
-(Intercept)               -9.241e-01  5.156e-02 -17.923  < 2e-16 ***
-distance                  -6.010e-04  5.118e-05 -11.743  < 2e-16 ***
-site.typeNatural           2.911e-01  1.194e-01   2.438  0.01709 *  
-distance:site.typeNatural -3.477e-04  1.169e-04  -2.975  0.00392 ** 
+(Intercept)               -9.233e-01  5.186e-02 -17.805  < 2e-16 ***
+distance                  -6.046e-04  5.147e-05 -11.747  < 2e-16 ***
+site.typeNatural           2.849e-01  1.201e-01   2.372  0.02019 *  
+distance:site.typeNatural -3.367e-04  1.175e-04  -2.865  0.00537 ** 
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
-Residual standard error: 0.2301 on 77 degrees of freedom
-Multiple R-squared:  0.7403,	Adjusted R-squared:  0.7302 
-F-statistic: 73.16 on 3 and 77 DF,  p-value: < 2.2e-16
+Residual standard error: 0.2314 on 77 degrees of freedom
+Multiple R-squared:  0.7384,	Adjusted R-squared:  0.7283 
+F-statistic: 72.46 on 3 and 77 DF,  p-value: < 2.2e-16
 
