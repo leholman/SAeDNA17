@@ -1,5 +1,5 @@
 
-<img src="/Archive/bacteria.png" align="right" height="120">
+<img src="/ARCHIVE/bacteria.png" align="right" height="120">
 
 
 # SAeDNA17
@@ -21,6 +21,4 @@ model.output | Model outputs from analyses
 rawdata | Raw datasets after bioinformatic analysis
 supplement | Supplementary data for analysis 
 
-
-<img src="/Archive/metazoa.png" align="left" height="120">
-
+<img src="/ARCHIVE/metazoa.png" align="left" height="120">
