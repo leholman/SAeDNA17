@@ -1,0 +1,325 @@
+##SAeDNA Script
+##May 2019 
+## Luke E. Holman
+## This script dials the bioinformatics in R and Bash for analysing eDNA metabarcoding data from South African coasts. 
+## It includes details of the Amazon EC2 services used and requirements for installation. 
+#####The commands where run independently three times across the three markers with differences between runs marked below. 
+
+
+###AMAZON EC2###
+##The below image was used, it is an Ubuntu distro with R preinstalled. 
+##The C5.xlarge instance was used for the metabarTOAD UPARSE analysis
+##The R5.4Xlarge instance was used for the RAM hungry DADA2 analysis. 
+##EC2 setup image - https://console.aws.amazon.com/ec2/home?region=eu-west-1#launchAmi=ami-003a0987ccad642ec
+################
+
+
+#######LAUNCH SETUP####
+###OPEN R####
+R
+install.packages("BiocManager")
+BiocManager::install("dada2", version = "3.8")
+install.packages("devtools")
+devtools::install_github("tobiasgf/lulu")
+devtools::install_github("leholman/metabarTOAD")
+q()
+#####
+
+###IN BASH####
+##Install conda
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+chmod +x Miniconda3-latest-Linux-x86_64.sh
+./Miniconda3-latest-Linux-x86_64.sh
+
+#install cutadapt
+conda install -y -c bioconda cutadapt
+
+#install dependancy for building vsearch
+sudo apt-get install autoconf
+
+#Downlaod and build vsearch
+wget https://github.com/torognes/vsearch/archive/v2.13.3.tar.gz
+tar xzf v2.13.3.tar.gz
+cd vsearch-2.13.3
+./autogen.sh
+./configure
+make
+
+######LAUCNH SETUP FINISHED##
+
+
+######UPARSE in R with metabarTOAD####
+
+r
+mkdir analysis
+cd analysis
+R
+library("metabarTOAD")
+library("lulu")
+library("dada2")
+library("Biostrings")
+library("data.table")
+Folders()
+
+##check files
+list.files("1.rawreads/")
+
+
+#Lets unzip them 
+Unzip()
+
+#now lets count up the raw reads
+files <- list.files("1.rawreads",pattern=".fastq",full.names = TRUE)
+rawreadcount <- sapply(files,FastqCount)
+mean(rawreadcount)
+sd(rawreadcount)
+
+
+#MERGE
+MergeReads(usearchdest = "/ec2data/software/usearch")
+
+#COUNT
+sapply(list.files("2.mergedreads",pattern=".fastq",full.names = TRUE),FastqCount)
+
+#######STRIP####### THIS OPTION VARIED BETWEEN MARKERS
+
+#COI
+PrimerStrip(PrimerF = "NNNNNNGGWACWGGWTGAACWGTWTAYCCYCC",
+            PrimerR = "TAIACYTCIGGRTGICCRAARAAYCA",
+            MinLen = 303,
+            MaxLen = 323,
+            cutadaptdest = "cutadapt",
+            ncores=4)
+
+      
+#18S
+ PrimerStrip(PrimerF = "NNNNNNAGGGCAAKYCTGGTGCCAGC",
+            PrimerR = "GRCGGTATCTRATCGYCTT",
+            MinLen = 400,
+            MaxLen = 450,
+            cutadaptdest = "cutadapt",
+            ncores=4)     
+
+#16S
+ PrimerStrip(PrimerF = "NNNNNNCCTACGGGNBGCASCAG",
+            PrimerR = "GACTACNVGGGTATCTAATCC",
+            MinLen = 390,
+            MaxLen = 450,
+            cutadaptdest = "cutadapt",
+            ncores=4)     
+      
+      
+            
+#POOLnFILTER
+PoolNFilterReads(vsearchdest="/ec2data/software/vsearch")
+
+#CLUSTER
+OTUCluster(usearchdest = "/ec2data/software/usearch")
+
+#DENOISE
+DenoiseUNOISE3(usearchdest = "/ec2data/software/usearch")
+
+#LULU
+ApplyLulu(seqs="/path/to/OTUs.csv",
+          table="/path/to/OTU/by/sample/table.csv",
+          output="/path/todesired/output/table/lulu.csv",
+          vsearchdest="/path/to/vsearch")
+
+#COI
+ApplyLulu(seqs="5.OTUs/AllSamples.0.97.OTUs.fasta",
+          table="6.mappings/OTUtabs/AllSamples.raw.0.97.csv",
+          output="8.LULU/COI.SAeDNA0.97.lulu.csv",
+          vsearchdest="/ec2data/software/vsearch")
+          
+          
+ApplyLulu(seqs="5.OTUs/AllSamples.unoise3.OTUs.fasta",
+          table="6.mappings/OTUtabs/AllSamples.raw.unoise3.csv",
+          output="8.LULU/COI.SAeDNA.unoise3.lulu.csv",
+          vsearchdest="/ec2data/software/vsearch")     
+
+#18S
+
+ApplyLulu(seqs="5.OTUs/AllSamples.0.97.OTUs.fasta",
+          table="6.mappings/OTUtabs/AllSamples.raw.0.97.csv",
+          output="8.LULU/Zhan.SAeDNA.0.97.lulu.csv",
+          vsearchdest="/ec2data/software/vsearch")
+          
+          
+ApplyLulu(seqs="5.OTUs/AllSamples.unoise3.OTUs.fasta",
+          table="6.mappings/OTUtabs/AllSamples.raw.unoise3.csv",
+          output="8.LULU/Zhan.SAeDNA.unoise3.lulu.csv",
+          vsearchdest="/ec2data/software/vsearch")     
+
+
+#16S
+
+ApplyLulu(seqs="5.OTUs/AllSamples.0.97.OTUs.fasta",
+          table="6.mappings/OTUtabs/AllSamples.raw.0.97.csv",
+          output="8.LULU/Prok.SAeDNA.0.97.lulu.csv",
+          vsearchdest="/ec2data/software/vsearch")
+          
+          
+ApplyLulu(seqs="5.OTUs/AllSamples.unoise3.OTUs.fasta",
+          table="6.mappings/OTUtabs/AllSamples.raw.unoise3.csv",
+          output="8.LULU/Prok.SAeDNA.unoise3.lulu.csv",
+          vsearchdest="/ec2data/software/vsearch")     
+
+
+
+#####DADA2 - relaunched AMS with big memory instance. 
+
+
+##First reads need to be prepped for DADA2
+
+#COI
+
+dadaReadPrep(PrimerF = "NNNNNNGGWACWGGWTGAACWGTWTAYCCYCC",
+             PrimerR = "TAIACYTCIGGRTGICCRAARAAYCA",
+             cutadaptdest = "cutadapt", 
+             ncores = 15
+)
+
+#18S
+dadaReadPrep(PrimerF = "NNNNNNAGGGCAAKYCTGGTGCCAGC",
+             PrimerR = "GRCGGTATCTRATCGYCTT",
+             cutadaptdest = "cutadapt", 
+             ncores = 15
+)
+
+#16S
+dadaReadPrep(PrimerF = "NNNNNNCCTACGGGNBGCASCAG",
+             PrimerR = "GACTACNVGGGTATCTAATCC",
+             cutadaptdest = "cutadapt", 
+             ncores = 4
+)
+
+
+
+#Lets list the files
+fnFs <- sort(list.files("7.DADA2/trimmed.reads", pattern="R1.stripped.fastq.gz", full.names = TRUE))
+fnRs <- sort(list.files("7.DADA2/trimmed.reads", pattern="R2.stripped.fastq.gz", full.names = TRUE))
+
+#pull out the sample names
+sample.names <- gsub("(.*).R1.*","\\1",basename(fnFs))
+
+#Lets examine the quality
+pdf("7.DADA2/SAeDNA3.1F.pdf",width=10,height=6)
+plotQualityProfile(fnFs[1:2]) + scale_x_continuous(breaks = scales::pretty_breaks(n = 20))
+dev.off()
+
+pdf("7.DADA2/SAeDNA3.1R.pdf",width=10,height=6)
+plotQualityProfile(fnRs[22:23]) + scale_x_continuous(breaks = scales::pretty_breaks(n = 20))
+dev.off()
+
+
+#Lets make a set of output paths
+filtFs <- file.path("7.DADA2/filtered", paste0(sample.names, "_F_filt.fastq.gz"))
+filtRs <- file.path("7.DADA2/filtered", paste0(sample.names, "_R_filt.fastq.gz"))
+
+#Lets run the filtering expression
+#COI
+out <- filterAndTrim(fnFs, filtFs, fnRs, filtRs, truncLen=c(250,230),
+                     maxN=0, maxEE=c(1,1), truncQ=2, rm.phix=TRUE,
+                     compress=TRUE, multithread=15)
+#18S
+
+out <- filterAndTrim(fnFs, filtFs, fnRs, filtRs, truncLen=c(240,220),
+                     maxN=0, maxEE=c(1,1), truncQ=2, rm.phix=TRUE,
+                     compress=TRUE, multithread=15)
+                  
+#16S
+out <- filterAndTrim(fnFs, filtFs, fnRs, filtRs, truncLen=c(240,220),
+                     maxN=0, maxEE=c(1,1), truncQ=2, rm.phix=TRUE,
+                     compress=TRUE, multithread=4)
+
+##Now we learn the errors
+errF <- learnErrors(filtFs, multithread=15)
+errR <- learnErrors(filtRs, multithread=15)
+
+
+#and plot the errors to evaluate
+pdf("7.DADA2/SAeDNA3.1.ErrorF.pdf",width=10,height=8)
+plotErrors(errF, nominalQ=TRUE)
+dev.off()
+
+pdf("7.DADA2/SAeDNA3.1.ErrorR.pdf",width=10,height=8)
+plotErrors(errR, nominalQ=TRUE)
+dev.off()
+
+
+#Now we dereplicate
+
+derepFs <- derepFastq(list.files("7.DADA2/filtered", pattern="F_filt.fastq.gz", full.names = TRUE), verbose=TRUE)
+derepRs <- derepFastq(list.files("7.DADA2/filtered", pattern="R_filt.fastq.gz", full.names = TRUE), verbose=TRUE)
+
+names(derepFs) <- sapply(strsplit(basename(list.files("7.DADA2/filtered", pattern="F_filt.fastq.gz", full.names = TRUE)), "_"), `[`, 1)
+names(derepRs) <- sapply(strsplit(basename(list.files("7.DADA2/filtered", pattern="R_filt.fastq.gz", full.names = TRUE)), "_"), `[`, 1)
+
+#DADA2 stuff
+dadaFs <- dada(derepFs, err=errF, multithread=TRUE)
+dadaRs <- dada(derepRs, err=errR, multithread=TRUE)
+
+names(filtFs) <- sample.names
+names(filtRs) <- sample.names
+
+#MERGE + TAB
+mergers <- mergePairs(dadaFs, derepFs, dadaRs, derepRs, verbose=TRUE)
+
+
+# Construct sequence table and remove chimeras
+seqtab <- makeSequenceTable(mergers)
+dim(seqtab)
+
+#check out sequence lengths
+table(nchar(getSequences(seqtab)))
+seqtab2 <- seqtab[,nchar(colnames(seqtab)) %in% seq(390,450)]
+
+#Chimeras
+seqtab.nochim <- removeBimeraDenovo(seqtab2, method="consensus", multithread=TRUE, verbose=TRUE)
+dim(seqtab.nochim)
+
+#Collapse sequences that are the same but have different lengths to to primer slippage
+
+seqtab.final <- collapseNoMismatch(seqtab.nochim)
+
+
+
+#Track reads
+rownames(out) <- sample.names
+getN <- function(x) sum(getUniques(x))
+track <- cbind(out,sapply(mergers, getN), rowSums(seqtab.nochim),rowSums(seqtab.final))
+colnames(track) <- c( "primerstripped","filtered","merged", "nonchim","seqcollapsed")
+rownames(track) <- sample.names
+head(track)
+
+
+
+#Write out
+write.csv(seqtab.final,"7.DADA2/finalDADA.out.csv")
+write.csv(out,"dada2.readsurvival.csv")
+
+
+
+#LULU
+#1.output DADA2 OTUs in fasta
+dna <- DNAStringSet(getSequences(seqtab.nochim))
+names(dna) <- paste0("OTU_",1:length(dna))
+writeXStringSet(dna,"5.OTUs/dada2.fasta", append=FALSE,
+                compress=FALSE, compression_level=NA, format="fasta")
+#2.save dada2 output for lulu
+colnames(seqtab.nochim) <-paste0("OTU_",1:length(dna))
+lulu.seqtab <- as.data.frame(t(seqtab.nochim))
+write.table(lulu.seqtab,"7.DADA2/lulu.dada2.pre.csv",sep=",")
+
+#3. apply algorithm
+ApplyLulu(seqs="5.OTUs/dada2.fasta",
+          table="7.DADA2/lulu.dada2.pre.csv",
+          output="8.LULU/AllSamples.lulu.dada2.csv",
+          vsearchdest="/ec2data/software/vsearch")
+
+
+str(lulu.seqtab)
+
+
+
+

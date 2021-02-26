@@ -194,7 +194,6 @@ write.csv(rProK,"cleaned/rarefied.ProK.csv")
 
 # Process the blast taxonomy 
 #COI
-#NOTE - for upload the COI file has been split, unzip concatenate and rezip beforre running the below line
 COIassignments <- ParseTaxonomy(blastoutput = "Taxonomy/COI.dada2.blast.270819.txt.gz",lineages = "Taxonomy/lineages-2019-08-14.csv.gz")
 #these are then put in the same order as the ecological data for later analyses
 COIassignments <- COIassignments[match(rownames(rCOI),as.character(COIassignments$OTU)),]
